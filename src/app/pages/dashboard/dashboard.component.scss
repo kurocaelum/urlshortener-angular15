@@ -1,0 +1,32 @@
+@import '../../../config-scss/rem-calc.scss';
+
+:host {
+    h1 {
+        padding: rem-calc(8) rem-calc(16);
+        margin: rem-calc(8) rem-calc(16);
+        font-size: rem-calc(40);
+        font-weight: 700;
+    }
+
+    .url-convert {
+        display: flex;
+        justify-content: center;
+    }
+
+    .url-list {
+        display: flex;
+        justify-content: center;
+        
+    }
+    
+    table, th, td {
+        border: 1px solid black;
+        padding: rem-calc(8);
+
+        th {
+            font-weight: 700;
+        }
+
+    }
+    
+}
