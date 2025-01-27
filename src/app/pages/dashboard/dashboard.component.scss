@@ -11,6 +11,20 @@
     .url-convert {
         display: flex;
         justify-content: center;
+
+        form {
+            padding: rem-calc(40);
+            width: 50%;
+        }
+
+        input {
+            border: rem-calc(1) solid black;
+            width: 100%;
+            border-radius: 4px;
+            padding: 8px;
+            margin-top: rem-calc(8);
+            margin-bottom: rem-calc(16);
+        }
     }
 
     .url-list {

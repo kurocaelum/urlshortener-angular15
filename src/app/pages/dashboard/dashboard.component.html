@@ -1,17 +1,40 @@
 <h1>Dashboard</h1>
 
-<section class="url-convert">    
-    <input type="text" placeholder="Converter URL...">
-    <br><br>
+<section class="url-convert">
+    <form>
+        <!-- TODO bootstrap? -->
+        <label for="identifier">Identificador</label>
+        <br>
+        <input id="identifier" type="text" placeholder="Tutorial de maquiagem, Como tocar piano, etc">
+        <br>
+    
+        <label for="url-new">URL para encurtar</label>
+        <br>
+        <input id="url-new" type="text" placeholder="Converter URL...">
+        <br>
+
+        <!-- TODO form bagunçando apos submit  -->
+        <button type="submit">Enviar</button>
+    </form>
 </section>
 
 <section class="url-list">
     <table>
         <tr>
-            <th>Nome</th>
+            <th>Identificador</th>
             <th>URL original</th>
             <th>URL encurtada</th>
             <!-- TODO botoes editar/excluir -->
+        </tr>
+        <tr>
+            <td>Teste</td>
+            <td><a href="https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_table_test">https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_table_test</a></td>
+            <td><a href="https://youtu.be/M4R_XUSTCcc">https://youtu.be/M4R_XUSTCcc</a></td>
+        </tr>
+        <tr>
+            <td>Teste</td>
+            <td><a href="https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_table_test">https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_table_test</a></td>
+            <td><a href="https://youtu.be/M4R_XUSTCcc">https://youtu.be/M4R_XUSTCcc</a></td>
         </tr>
         <tr>
             <td>Teste</td>
