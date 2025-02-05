@@ -1,68 +1,66 @@
 <h1>Dashboard</h1>
 
-<section class="url-convert">
-    <form>
-        <!-- TODO bootstrap? -->
-        <label for="identifier">Identificador</label>
-        <br>
-        <input id="identifier" type="text" placeholder="Tutorial de maquiagem, Como tocar piano, etc">
-        <br>
-    
-        <label for="url-new">URL para encurtar</label>
-        <br>
-        <input id="url-new" type="text" placeholder="Converter URL...">
-        <br>
-
-        <!-- TODO form bagunçando apos submit  -->
-        <button type="submit">Enviar</button>
-    </form>
-</section>
-
-<section class="url-list">
-    <table>
-        <tr>
-            <th>Identificador</th>
-            <th>URL original</th>
-            <th>URL encurtada</th>
-            <!-- TODO botoes editar/excluir -->
-        </tr>
-        <tr>
-            <td>Teste</td>
-            <td><a href="https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_table_test">https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_table_test</a></td>
-            <td><a href="https://youtu.be/M4R_XUSTCcc">https://youtu.be/M4R_XUSTCcc</a></td>
-        </tr>
-        <tr>
-            <td>Teste</td>
-            <td><a href="https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_table_test">https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_table_test</a></td>
-            <td><a href="https://youtu.be/M4R_XUSTCcc">https://youtu.be/M4R_XUSTCcc</a></td>
-        </tr>
-        <tr>
-            <td>Teste</td>
-            <td><a href="https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_table_test">https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_table_test</a></td>
-            <td><a href="https://youtu.be/M4R_XUSTCcc">https://youtu.be/M4R_XUSTCcc</a></td>
-        </tr>
-    </table>
-</section>
-
-<div class="container-fluid py-3">
-    <div class="row my-3">
-      <div class="col">
-        <label for="exampleFormControlInput1" class="form-label">Email address</label>
-        <input type="email" class="form-control form-control-sm" id="exampleFormControlInput1" placeholder="name@example.com">
-      </div>
-    </div>
-    <div class="row my-3">
-      <div class="col">
-        <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-        <textarea class="form-control form-control-sm" id="exampleFormControlTextarea1" rows="3"></textarea>
-      </div>
-    </div>
-    <div class="row my-3">
-      <div class="col">
-        <div class="form-check form-switch">
-          <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-          <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
+<div class="container">
+  <section class="url-shorten">
+    <form #shorten="ngForm">
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label for="identifier" class="form-label">Identificador</label>
+            <input name="identifier" class="form-control" type="text"
+              placeholder="Tutorial de maquiagem, Como tocar piano, etc" ngModel>
+          </div>
         </div>
       </div>
-    </div>
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label for="url-new" class="form-label">URL para encurtar</label>
+            <input class="form-control" name="url-new" type="text" placeholder="Encurtar URL..." ngModel>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-3"></div>
+        <div class="text-center col-6 d-grid">
+          <button type="submit" class="btn btn-primary">Enviar</button>
+        </div>
+      </div>
+    </form>
+  </section>
 </div>
+
+{{ shorten.value | json }}
+
+<!-- TODO botões editar/excluir -->
+<section class="url-list mt-5">
+  <table>
+    <tr>
+      <th>Identificador</th>
+      <th>URL original</th>
+      <th>URL encurtada</th>
+      <th>TODO</th>
+    </tr>
+    <tr>
+      <td>Teste</td>
+      <td><a
+          href="https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_table_test">https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_table_test</a>
+      </td>
+      <td><a href="https://youtu.be/M4R_XUSTCcc">https://youtu.be/M4R_XUSTCcc</a></td>
+    </tr>
+    <tr>
+      <td>Teste</td>
+      <td><a
+          href="https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_table_test">https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_table_test</a>
+      </td>
+      <td><a href="https://youtu.be/M4R_XUSTCcc">https://youtu.be/M4R_XUSTCcc</a></td>
+    </tr>
+    <tr>
+      <td>Teste</td>
+      <td><a
+          href="https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_table_test">https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_table_test</a>
+      </td>
+      <td><a href="https://youtu.be/M4R_XUSTCcc">https://youtu.be/M4R_XUSTCcc</a></td>
+    </tr>
+  </table>
+</section>

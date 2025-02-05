@@ -6,6 +6,7 @@ import { RoutingModule } from './routing.module';
 
 // Custom components
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -15,7 +16,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
   ],
   imports: [
     CommonModule,
-    RoutingModule
+    RoutingModule,
+    FormsModule
   ]
 })
 export class PagesModule { }
