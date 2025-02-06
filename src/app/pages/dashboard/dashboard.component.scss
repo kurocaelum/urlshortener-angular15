@@ -19,19 +19,12 @@
             margin-bottom: rem-calc(16);
         }
     }
-    
-    // .url-list {
-    //     display: flex;
-    //     justify-content: center;
-    // }
+
+    th {
+        font-weight: 700;
+    }
     
     table, th, td {
         border: 1px solid black;
-        padding: rem-calc(8);
-    
-        th {
-            font-weight: 700;
-        }
-    
     }
 }
