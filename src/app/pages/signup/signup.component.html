@@ -12,20 +12,20 @@
                             <h1 class="mb-5">URL Shorten</h1>
 
                             <h3 class="mb-5">Cadastro</h3>
-                            <form #signup="ngForm">
+                            <form [formGroup]="formSignUp">
                                 <div data-mdb-input-init class="form-outline mb-4">
-                                    <label class="form-label" for="username">Nome de usuário</label>
-                                    <input type="email" id="username" class="form-control form-control-lg" />
+                                    <label class="form-label" for="username" >Nome de usuário</label>
+                                    <input formControlName="username" type="text" id="username" class="form-control form-control-lg" required />
                                 </div>
 
                                 <div data-mdb-input-init class="form-outline mb-4">
-                                    <label class="form-label" for="password">Senha</label>
-                                    <input type="password" id="password" class="form-control form-control-lg" />
+                                    <label class="form-label" for="password" >Senha</label>
+                                    <input formControlName="password" type="password" id="password" class="form-control form-control-lg" required />
                                 </div>
                                 
                                 <div data-mdb-input-init class="form-outline mb-4">
                                     <label class="form-label" for="password-confirm">Confirmar Senha</label>
-                                    <input type="password" id="password-confirm" class="form-control form-control-lg" />
+                                    <input formControlName="passwordConfirm" type="password" id="passwordConfirm" class="form-control form-control-lg" required />
                                 </div>
 
 
@@ -36,7 +36,7 @@
                                 </div> -->
 
                                 <button data-mdb-button-init data-mdb-ripple-init
-                                    class="btn btn-primary btn-lg btn-block" type="submit">Cadastrar</button>
+                                    class="btn btn-primary btn-lg btn-block" type="submit" [disabled]="formSignUp.invalid">Cadastrar</button>
                             </form>
                         </div>
                     </div>
