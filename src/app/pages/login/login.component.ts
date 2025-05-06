@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -18,12 +17,10 @@ export class LoginComponent {
   public msgError!: string
 
   constructor(
-    private router: Router, 
     private formBuilder: FormBuilder,
     private authService: AuthService
   ){}
 
-  // TODO logica de login (comparar username e senha)
   public onSubmit() {
     if(this.formAuth.valid){
       this.authService.login({
@@ -33,8 +30,6 @@ export class LoginComponent {
         next: res => res,
         error: e => (this.msgError = e)
       })
-      
-      // this.router.navigate(['/dashboard'])
     }
   }
 
