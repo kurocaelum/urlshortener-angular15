@@ -13,12 +13,14 @@ export class AuthService {
 
   public login(payload: { username: string, password: string }): Observable<any> {
     return this.http.post(`${this.url}/auth/login`, payload).pipe(
-      map(data => {
-        console.log(data)
+      map(res => {
+        console.log(res)
       }),
-      catchError(err => {
-        // console.log(err)
-        return throwError(() => err.error.message)
+      catchError(e => {
+        if(e.error.message)
+          return throwError(() => e.error.message)
+
+        return throwError(() => "Falha ao conectar com servidor.")
       })
     )
   }
