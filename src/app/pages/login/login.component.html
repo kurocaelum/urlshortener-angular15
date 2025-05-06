@@ -29,11 +29,9 @@
                                 <a routerLink="/signup"><button data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg btn-block mx-3">Cadastrar</button></a>
                             </form>
                         </div>
+                        <span class="text-center" *ngIf="msgError">{{ msgError }}</span>
                     </div>
                 </div>
-
-                <span *ngIf="msgError">{{ msgError }}</span>
-
             </div>
         </div>
     </section>
