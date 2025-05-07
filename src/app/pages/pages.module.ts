@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
 // Routing module
-import { RoutingModule } from './routing.module';
+import { PagesRoutingModule } from './pages-routing.module';
 
 // Custom components
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -21,7 +21,7 @@ import { SignupComponent } from './signup/signup.component';
   ],
   imports: [
     CommonModule,
-    RoutingModule,
+    PagesRoutingModule,
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule
