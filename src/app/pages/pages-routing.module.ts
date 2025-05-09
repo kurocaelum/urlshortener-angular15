@@ -6,11 +6,13 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginGuard } from '../guards/login.guard';
+import { AlreadyLoggedGuard } from '../guards/already-logged.guard';
 
 const routes: Routes = [
   {
     path: '',
-    component: LoginComponent
+    component: LoginComponent,
+    canActivate: [AlreadyLoggedGuard]
   },
   {
     path: 'dashboard',
@@ -19,7 +21,8 @@ const routes: Routes = [
   },
   {
     path: 'signup',
-    component: SignupComponent
+    component: SignupComponent,
+    canActivate: [AlreadyLoggedGuard]
   }
 ];
 
