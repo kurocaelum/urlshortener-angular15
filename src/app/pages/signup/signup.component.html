@@ -12,7 +12,7 @@
                             <h1 class="mb-5">URL Shorten</h1>
 
                             <h3 class="mb-5">Cadastro</h3>
-                            <form [formGroup]="formSignUp">
+                            <form [formGroup]="formSignUp" (ngSubmit)="onSubmit()">
                                 <div data-mdb-input-init class="form-outline mb-4">
                                     <label class="form-label" for="username" >Nome de usuário</label>
                                     <input formControlName="username" type="text" id="username" class="form-control form-control-lg" required />
@@ -23,16 +23,9 @@
                                     <input formControlName="password" type="password" id="password" class="form-control form-control-lg" required />
                                 </div>
                                 
-                                <div data-mdb-input-init class="form-outline mb-4">
+                                <!-- <div data-mdb-input-init class="form-outline mb-4">
                                     <label class="form-label" for="password-confirm">Confirmar Senha</label>
                                     <input formControlName="passwordConfirm" type="password" id="passwordConfirm" class="form-control form-control-lg" required />
-                                </div>
-
-
-                                <!-- Checkbox -->
-                                <!-- <div class="form-check d-flex justify-content-start mb-4">
-                                <input class="form-check-input" type="checkbox" value="" id="form1Example3" />
-                                <label class="form-check-label" for="form1Example3"> Remember password </label>
                                 </div> -->
 
                                 <button data-mdb-button-init data-mdb-ripple-init

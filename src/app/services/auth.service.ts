@@ -15,6 +15,21 @@ export class AuthService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
+  public register(payload: { username: string, password: string }): Observable<any> {
+    return this.http.post(`${this.url}/auth/register`, payload).pipe(
+      map(res => {
+        alert("Cadastrado com sucesso!")
+        return this.router.navigate([''])
+      }), 
+      catchError(e => {
+        if(e.error.message)
+          return throwError(() => e.error.message)
+
+        return throwError(() => "Falha no cadastro. Tente novamente.")
+      })
+    )
+  }
+
   public login(payload: { username: string, password: string }): Observable<any> {
     return this.http.post<{ token: string }>(`${this.url}/auth/login`, payload).pipe(
       map(res => {

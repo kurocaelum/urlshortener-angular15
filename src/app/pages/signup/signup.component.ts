@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -14,6 +15,23 @@ export class SignupComponent {
     // passwordConfirm: ['', Validators.required]
   })
 
-  constructor(private formBuilder: FormBuilder) {}
+  public msgError!: string
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private authService: AuthService
+  ) {}
+
+  public onSubmit() {
+    if(this.formSignUp.valid){
+      this.authService.register({
+        username: this.formSignUp.value.username,
+        password: this.formSignUp.value.password
+      }).subscribe({
+        next: res => res,
+        error: e => (this.msgError = e)
+      })
+    }
+  }
 
 }
