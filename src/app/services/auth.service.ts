@@ -9,11 +9,24 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthService {
 
   private url: string = "http://localhost:8080";
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(
+    private http: HttpClient,
+    private router: Router
+  ) { }
+
+  public getUsernameFromToken() {
+    if(this.isAuthenticated()) {
+      const token = localStorage.getItem('access_token')
+      const jwtHelper = new JwtHelperService()
+      return jwtHelper.decodeToken(token!).sub
+    }
+    return null
+  }
 
   public register(payload: { username: string, password: string }): Observable<any> {
     return this.http.post(`${this.url}/auth/register`, payload).pipe(
@@ -54,12 +67,9 @@ export class AuthService {
 
   public isAuthenticated(): boolean {
     const token = localStorage.getItem('access_token')
-
     if(!token)
       return false
-
     const jwtHelper = new JwtHelperService()
-
     return !jwtHelper.isTokenExpired(token)
   }
 
