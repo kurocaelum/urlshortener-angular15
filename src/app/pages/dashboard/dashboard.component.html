@@ -49,6 +49,11 @@
 <!-- TODO converter em componente -->
 <!-- TODO botões editar/excluir -->
 <div class="container mt-5">
+  <div *ngIf="user">
+    {{ user | json }}
+  </div>
+  <br>
+  
   <div class="row">
     <div class="col">
       <table class="table text-center">
@@ -97,8 +102,5 @@
         </tbody>
       </table>
     </div>
-  </div>
-  <div *ngIf="user">
-    {{ user | json }}
   </div>
 </div>
