@@ -5,6 +5,7 @@ import { catchError, map, Observable, throwError } from 'rxjs';
 
 // Services
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { User } from '../interfaces/user';
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +27,12 @@ export class AuthService {
       return jwtHelper.decodeToken(token!).sub
     }
     return null
+  }
+
+  public findUser(username: string): Observable<User> {
+    return this.http.get<User>(`${this.url}/users/${username}`).pipe(
+      res => res
+    )
   }
 
   public register(payload: { username: string, password: string }): Observable<any> {
