@@ -1,5 +1,11 @@
 export interface User {
     id: number,
     username: string,
-    urls: Array<any>
+    urls: {
+        id: number,
+        identifier: string,
+        urlOriginal: string,
+        urlShortened: string,
+        date: string
+    }[]
 }

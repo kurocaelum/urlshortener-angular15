@@ -46,61 +46,42 @@
   </section>
 </div>
 
-<!-- TODO converter em componente -->
-<!-- TODO botões editar/excluir -->
 <div class="container mt-5">
-  <div *ngIf="user">
+  <!-- <div *ngIf="user">
     {{ user | json }}
   </div>
-  <br>
-  
+  <br> -->
+
   <div class="row">
     <div class="col">
-      <table class="table text-center">
-        <thead>
-          <tr>
-            <th>Identificador</th>
-            <th>URL original</th>
-            <th>URL encurtada</th>
-            <th>Opções</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Teste</td>
-            <td><a
-                href="https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_table_test">https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_table_test</a>
-            </td>
-            <td><a href="https://youtu.be/M4R_XUSTCcc">https://youtu.be/M4R_XUSTCcc</a></td>
-            <td>
-              <button type="button" class="btn btn-warning mx-1">Editar</button>
-              <button type="button" class="btn btn-danger mx-1">Deletar</button>
-            </td>
-          </tr>
-          <tr>
-            <td>Teste</td>
-            <td><a
-                href="https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_table_test">https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_table_test</a>
-            </td>
-            <td><a href="https://youtu.be/M4R_XUSTCcc">https://youtu.be/M4R_XUSTCcc</a></td>
-            <td>
-              <button type="button" class="btn btn-warning mx-1">Editar</button>
-              <button type="button" class="btn btn-danger mx-1">Deletar</button>
-            </td>
-          </tr>
-          <tr>
-            <td>Teste</td>
-            <td><a
-                href="https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_table_test">https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_table_test</a>
-            </td>
-            <td><a href="https://youtu.be/M4R_XUSTCcc">https://youtu.be/M4R_XUSTCcc</a></td>
-            <td>
-              <button type="button" class="btn btn-warning mx-1">Editar</button>
-              <button type="button" class="btn btn-danger mx-1">Deletar</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <div *ngIf="!isUrlsEmpty(); else urlsEmpty">
+        <table class="table text-center">
+          <thead>
+            <tr>
+              <th>Identificador</th>
+              <th>URL original</th>
+              <th>URL encurtada</th>
+              <th>Opções</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let url of user.urls">
+              <td>{{url.identifier}}</td>
+              <td><a href="{{url.urlOriginal}}" target="_blank" rel="noopener noreferrer">{{url.urlOriginal}}</a></td>
+              <td><a href="" target="_blank" rel="noopener noreferrer">{{url.urlShortened}}</a></td>
+              <td>
+                <button type="button" class="btn btn-warning mx-1">Editar</button>
+                <button type="button" class="btn btn-danger mx-1">Deletar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <ng-template #urlsEmpty>
+        <div class="col">
+          <h3>Nenhuma URL encontrada</h3>
+        </div>
+      </ng-template>
     </div>
   </div>
 </div>

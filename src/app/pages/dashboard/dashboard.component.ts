@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class DashboardComponent implements OnInit {
 
   username!: string
-  user!: User
+  user: User | any
 
   constructor(private authService: AuthService) {}
 
@@ -23,4 +23,8 @@ export class DashboardComponent implements OnInit {
     this.authService.findUser(this.username).subscribe(res => this.user = res)
   }
 
+  public isUrlsEmpty(): boolean {
+    return this.user.urls.length === 0
+  }
+  
 }
