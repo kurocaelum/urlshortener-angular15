@@ -80,4 +80,21 @@ export class AuthService {
     return !jwtHelper.isTokenExpired(token)
   }
 
+  public insertUrl(payload: {identifier: string, urlOriginal: string, userId: number}): Observable<any> {
+    return this.http.post<any>(`${this.url}/shorturls`, payload).pipe(
+      map(res => {
+        console.log("INSERT URL")
+        console.log(res)
+        window.location.reload()
+        // return this.router.navigate(['/dashboard'])
+      }),
+      catchError(e => {
+        if(e.error.message)
+          return throwError(() => e.error.message)
+
+        return throwError(() => "Falha ao encurtar nova URL.")
+      })
+    )
+  }
+
 }

@@ -18,29 +18,32 @@
 
 <div class="container">
   <section class="url-shorten">
-    <form #shorten="ngForm">
+    <form [formGroup]="formInsert" (ngSubmit)="onInsert()">
       <div class="row">
         <div class="col">
           <div class="form-group">
             <label for="identifier" class="form-label">Identificador</label>
-            <input name="identifier" class="form-control" type="text"
-              placeholder="Tutorial de maquiagem, Como tocar piano, etc" ngModel>
+            <input formControlName="identifier" id="identifier" class="form-control" type="text"
+              placeholder="Tutorial de maquiagem, Como tocar piano, etc" required />
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col">
           <div class="form-group">
-            <label for="url-new" class="form-label">URL para encurtar</label>
-            <input class="form-control" name="url-new" type="text" placeholder="Encurtar URL..." ngModel>
+            <label for="url" class="form-label">URL para encurtar</label>
+            <input formControlName="url" id="url" type="text" class="form-control" placeholder="Encurtar URL..." required />
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-3"></div>
         <div class="text-center col-6 d-grid">
-          <button type="submit" class="btn btn-primary">Enviar</button>
+          <button type="submit" class="btn btn-primary" [disabled]="!formInsert.valid">Enviar</button>
         </div>
+      </div>
+      <div class="row">
+        <div *ngIf="msgError">{{msgError}}</div>
       </div>
     </form>
   </section>
