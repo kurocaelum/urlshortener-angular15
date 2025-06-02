@@ -83,10 +83,21 @@ export class AuthService {
   public insertUrl(payload: {identifier: string, urlOriginal: string, userId: number}): Observable<any> {
     return this.http.post<any>(`${this.url}/shorturls`, payload).pipe(
       map(res => {
-        console.log("INSERT URL")
-        console.log(res)
         window.location.reload()
-        // return this.router.navigate(['/dashboard'])
+      }),
+      catchError(e => {
+        if(e.error.message)
+          return throwError(() => e.error.message)
+
+        return throwError(() => "Falha ao encurtar nova URL.")
+      })
+    )
+  }
+
+  public deleteUrl(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.url}/shorturls/${id}`).pipe(
+      map(res => {
+        window.location.reload()
       }),
       catchError(e => {
         if(e.error.message)

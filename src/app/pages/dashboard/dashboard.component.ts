@@ -24,6 +24,11 @@ export class DashboardComponent implements OnInit {
     private formBuilder: FormBuilder
   ) {}
 
+  ngOnInit(): void {
+    this.username = this.authService.getUsernameFromToken()
+    this.authService.findUser(this.username).subscribe(res => this.user = res)
+  }
+
   public onInsert() {
     if(this.formInsert.valid) {
       this.authService.insertUrl({
@@ -41,13 +46,15 @@ export class DashboardComponent implements OnInit {
     this.authService.logout()
   }
 
-  ngOnInit(): void {
-    this.username = this.authService.getUsernameFromToken()
-    this.authService.findUser(this.username).subscribe(res => this.user = res)
-  }
-
   public isUrlsEmpty(): boolean {
     return this.user.urls.length === 0
   }
-  
+
+  public deleteUrl(id: number) {
+    console.log("URL ID: " + id)
+    this.authService.deleteUrl(id).subscribe({
+      next: res => res,
+      error: e => (this.msgError = e)
+    })
+  }
 }
