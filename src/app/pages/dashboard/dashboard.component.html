@@ -62,19 +62,23 @@
           <thead>
             <tr>
               <th>Identificador</th>
+              <th>Data</th>
               <th>URL original</th>
               <th>URL encurtada</th>
               <th>Opções</th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let url of user.urls">
-              <td>{{url.identifier}}</td>
+            <tr *ngFor="let url of user.urls; let i = index">
+              <td><input [(ngModel)]="url.identifier" [readonly]="!editUrl[i]" /></td>
+              <td>{{url.date}}</td>
               <td><a href="{{url.urlOriginal}}" target="_blank" rel="noopener noreferrer">{{url.urlOriginal}}</a></td>
               <td><a href="" target="_blank" rel="noopener noreferrer">{{url.urlShortened}}</a></td>
               <td>
-                <button type="button" class="btn btn-warning mx-1">Editar</button>
-                <button type="button" class="btn btn-danger mx-1" (click)="deleteUrl(url.id)">Deletar</button>
+                <button type="button" class="btn btn-primary mx-1" *ngIf="!editUrl[i]" (click)="toggleEditUrl(i)">Renomear</button>
+                <button type="button" class="btn btn-danger mx-1" *ngIf="!editUrl[i]" (click)="deleteUrl(url.id)">Deletar</button>
+                <button type="button" class="btn btn-primary mx-1" *ngIf="editUrl[i]" (click)="updateUrl(i)">Salvar</button>
+                <button type="button" class="btn btn-secondary mx-1" *ngIf="editUrl[i]" (click)="cancelEditUrl(url.id, i)">Cancelar</button>
               </td>
             </tr>
           </tbody>

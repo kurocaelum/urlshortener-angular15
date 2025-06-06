@@ -51,9 +51,10 @@ export class AuthService {
   }
 
   public login(payload: { username: string, password: string }): Observable<any> {
+    localStorage.removeItem('access_token')
+
     return this.http.post<{ token: string }>(`${this.url}/auth/login`, payload).pipe(
       map(res => {
-        localStorage.removeItem('access_token')
         localStorage.setItem('access_token', res.token)
         
         return this.router.navigate(['/dashboard'])
@@ -78,6 +79,13 @@ export class AuthService {
       return false
     const jwtHelper = new JwtHelperService()
     return !jwtHelper.isTokenExpired(token)
+  }
+
+  public findUrl(id: number): Observable<any> {
+    return this.http.get<any>(`${this.url}/shorturls/${id}`).pipe(
+      res => res,
+      error => error
+    )
   }
 
   public insertUrl(payload: {identifier: string, urlOriginal: string, userId: number}): Observable<any> {
@@ -106,6 +114,28 @@ export class AuthService {
         return throwError(() => "Falha ao encurtar nova URL.")
       })
     )
+  }
+
+  public updateUrl(payload: {
+      id: number,
+      identifier: string,
+      urlOriginal: string,
+      urlShortened: string,
+      date: string
+    }): Observable<any> {
+
+    return this.http.put<any>(`${this.url}/shorturls/${payload.id}`, payload).pipe(
+      map(res => {
+        window.location.reload()
+      }),
+      catchError(e => {
+        if(e.error.message)
+          return throwError(() => e.error.message)
+
+        return throwError(() => "Falha ao editar URL.")
+      })
+    )
+    
   }
 
 }
