@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginGuard } from '../guards/login.guard';
 import { AlreadyLoggedGuard } from '../guards/already-logged.guard';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,10 @@ const routes: Routes = [
     path: 'signup',
     component: SignupComponent,
     canActivate: [AlreadyLoggedGuard]
+  },
+  {
+    path: '**',
+    component: NotFoundComponent
   }
 ];
 
