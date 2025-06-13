@@ -50,11 +50,6 @@
 </div>
 
 <div class="container mt-5">
-  <!-- <div *ngIf="user">
-    {{ user | json }}
-  </div>
-  <br> -->
-
   <div class="row">
     <div class="col">
       <div *ngIf="!isUrlsEmpty(); else urlsEmpty">
@@ -73,7 +68,7 @@
               <td><input [(ngModel)]="url.identifier" [readonly]="!editUrl[i]" /></td>
               <td>{{url.date}}</td>
               <td><a href="{{url.urlOriginal}}" target="_blank" rel="noopener noreferrer">{{url.urlOriginal}}</a></td>
-              <td><a href="{{url.urlOriginal}}" target="_blank" rel="noopener noreferrer">{{url.urlShortened}}</a></td>
+              <td><a href="{{url.urlShortened}}" target="_blank" rel="noopener noreferrer">{{url.urlShortened}}</a></td>
               <td>
                 <button type="button" class="btn btn-primary mx-1" *ngIf="!editUrl[i]" (click)="toggleEditUrl(i)">Renomear</button>
                 <button type="button" class="btn btn-danger mx-1" *ngIf="!editUrl[i]" (click)="deleteUrl(url.id)">Deletar</button>

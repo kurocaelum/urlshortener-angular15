@@ -8,6 +8,7 @@ import { SignupComponent } from './signup/signup.component';
 import { LoginGuard } from '../guards/login.guard';
 import { AlreadyLoggedGuard } from '../guards/already-logged.guard';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { RedirectComponent } from './redirect/redirect.component';
 
 const routes: Routes = [
   {
@@ -24,6 +25,14 @@ const routes: Routes = [
     path: 'signup',
     component: SignupComponent,
     canActivate: [AlreadyLoggedGuard]
+  },
+  {
+    path: '404',
+    component: NotFoundComponent
+  },
+  {
+    path: ':urlShortened',
+    component: RedirectComponent
   },
   {
     path: '**',

@@ -88,6 +88,13 @@ export class AuthService {
     )
   }
 
+  public findUrlByShort(urlFrag: string): Observable<any> {
+    return this.http.get<any>(`${this.url}/shorturls/source/${urlFrag}`).pipe(
+      res => res,
+      error => error
+    )
+  }
+
   public insertUrl(payload: {identifier: string, urlOriginal: string, userId: number}): Observable<any> {
     return this.http.post<any>(`${this.url}/shorturls`, payload).pipe(
       map(res => {
