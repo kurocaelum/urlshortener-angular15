@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { catchError, map, Observable, throwError } from 'rxjs';
@@ -59,11 +59,14 @@ export class AuthService {
         
         return this.router.navigate(['/dashboard'])
       }),
-      catchError(e => {
+      catchError((e: HttpErrorResponse) => {
+        if(e.status === 403)
+          return throwError(() => "Usuário ou senha incorretos")
+
         if(e.error.message)
           return throwError(() => e.error.message)
 
-        return throwError(() => "Falha ao conectar com servidor.")
+        return throwError(() => "Falha ao conectar com servidor")
       })
     )
   }
